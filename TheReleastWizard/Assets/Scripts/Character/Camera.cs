@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class Camera : MonoBehaviour
 {
-
-    [SerializeField] float smoothSpeed = 10f;
-
     [SerializeField] Transform target;
-
-    Vector3 offset;
 
     PlayerInput pc;
 
@@ -32,12 +27,11 @@ public class Camera : MonoBehaviour
 
     void Awake()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         pc = new PlayerInput();
 
         pc.Player.MouseMovement.performed += ctx => mouseDelta = ctx.ReadValue<Vector2>();
         pc.Player.MouseMovement.canceled += ctx => mouseDelta = Vector2.zero;
-
-        //offset = new Vector3(target.position.x, target.position.y + 7.0f, target.position.z + distance);
 
         velX = transform.eulerAngles.y;
         velY = transform.eulerAngles.x;
@@ -52,7 +46,7 @@ public class Camera : MonoBehaviour
         // Vert. rotate
         velY -= 20 * mouseDelta.y * 0.02f;
 
-        velY = ClampAngle(velY, -20, 80);
+        velY = ClampAngle(velY, -10, 80);
         Quaternion rot = Quaternion.Euler(velY, velX, 0);
 
         distance = 12.0f;
