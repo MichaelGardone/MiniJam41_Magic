@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public GameObject primaryAttack;
     public GameObject secondaryAttack;
 
+    public float primaryMaxCool = 0.25f, secondMaxCool = 5.0f;
+
     [Tooltip("Layers to check for jumping.")]
     [SerializeField] LayerMask groundLayers;
 
@@ -33,12 +35,14 @@ public class PlayerController : MonoBehaviour
     private bool SprintToggle = false;
     private bool SpacePressed = false;
 
+    private bool primaryPressed = false;
+    private bool secondaryPressed = false;
+
     // For directional inputs
     Vector3 camForward;
     Vector3 camRight;
 
-    public float primaryMaxCool = 0.25f, secondMaxCool = 5.0f;
-    public float primaryCoolDown, secondCoolDown;
+    float primaryCoolDown, secondCoolDown;
 
     private void OnEnable()
     {
@@ -75,8 +79,11 @@ public class PlayerController : MonoBehaviour
 
         pc.Player.Jump.performed += ctx => JumpPressed();
 
-        pc.Player.PrimaryFire.performed += ctx => PrimaryFirePressed();
-        pc.Player.SecondaryFire.performed += ctx => SecondaryFirePressed();
+        pc.Player.PrimaryFire.performed += ctx => PrimaryFirePressed(true);
+        pc.Player.PrimaryFire.canceled += ctx => PrimaryFirePressed(false);
+
+        pc.Player.SecondaryFire.performed += ctx => SecondaryFirePressed(true);
+        pc.Player.SecondaryFire.canceled += ctx => SecondaryFirePressed(false);
 
         pc.Player.MouseMovement.performed += ctx => mouseDelta = ctx.ReadValue<Vector2>();
         pc.Player.MouseMovement.canceled += ctx => mouseDelta = Vector2.zero;
@@ -93,6 +100,19 @@ public class PlayerController : MonoBehaviour
             primaryCoolDown = 0;
         if (secondCoolDown >= secondMaxCool)
             secondCoolDown = 0;
+
+        if (primaryCoolDown == 0 && primaryPressed)
+        {
+            GameObject g = Instantiate(primaryAttack, transform.position + transform.forward * 1.5f, Quaternion.identity);
+            g.GetComponent<Missile>().direction = camera.transform.forward;
+            primaryCoolDown += 0.0001f;
+        }
+
+        if (secondCoolDown == 0 && secondaryPressed)
+        {
+            GameObject g = Instantiate(secondaryAttack, new Vector3(transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.identity);
+            secondCoolDown += 0.0001f;
+        }
     }
 
     void FixedUpdate()
@@ -163,23 +183,14 @@ public class PlayerController : MonoBehaviour
         SpacePressed = true;
     }
 
-    void PrimaryFirePressed()
+    void PrimaryFirePressed(bool pressed)
     {
-        if(primaryCoolDown == 0)
-        {
-            GameObject g = Instantiate(primaryAttack, transform.position + transform.forward * 1.5f, Quaternion.identity);
-            g.GetComponent<Missile>().direction = camera.transform.forward;
-            primaryCoolDown += 0.0001f;
-        }
+        primaryPressed = pressed;
     }
 
-    void SecondaryFirePressed()
+    void SecondaryFirePressed(bool pressed)
     {
-        if(secondCoolDown == 0)
-        {
-            GameObject g = Instantiate(secondaryAttack, new Vector3(transform.position.x, transform.position.y-0.25f, transform.position.z), Quaternion.identity);
-            secondCoolDown += 0.0001f;
-        }
+        secondaryPressed = pressed;
     }
 
     private bool IsGrounded()
