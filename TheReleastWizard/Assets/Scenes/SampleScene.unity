@@ -513,12 +513,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 169954059}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &169954061 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7268926463759058327, guid: 88496056f1d19f74093711a4c872c499,
-    type: 3}
-  m_PrefabInstance: {fileID: 169954059}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &169954062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534,23 +528,31 @@ MonoBehaviour:
   maxHealth: 50
   hitPower: 5
   walkSpeed: 5
-  targets: []
---- !u!114 &169954063
-MonoBehaviour:
+  targets:
+  - {fileID: 1643371196}
+  agent: {fileID: 0}
+--- !u!195 &169954064
+NavMeshAgent:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 169954061}
+  m_GameObject: {fileID: 169954060}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b58db645d289da140b3c2045f690c452, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 0
-  hitPower: 0
-  walkSpeed: 0
-  targets: []
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &349901584
 GameObject:
   m_ObjectHideFlags: 0
@@ -1218,6 +1220,7 @@ MonoBehaviour:
   sensitivityY: 0.005
   distY: 4
   distZ: 12
+  input: {fileID: 819507274}
   target: {fileID: 1643371200}
 --- !u!1 &1643371196
 GameObject:
@@ -1231,8 +1234,8 @@ GameObject:
   - component: {fileID: 1643371199}
   - component: {fileID: 1643371198}
   - component: {fileID: 1643371197}
-  - component: {fileID: 1643371201}
   - component: {fileID: 1643371202}
+  - component: {fileID: 1643371203}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -1315,22 +1318,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &1643371201
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1643371196}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 80
-  m_CollisionDetection: 0
 --- !u!114 &1643371202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1343,10 +1330,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e38a448af4e6a7241b3a796d16eda6a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 20
+  walkSpeed: 5
   runModifier: 2
-  jumpHeight: 500
-  camera: {fileID: 963194227}
+  jumpHeight: 15
+  _camera: {fileID: 963194227}
   primaryAttack: {fileID: 5822923605649529429, guid: 719e7e042aec6e64ab9a9863e9485449,
     type: 3}
   secondaryAttack: {fileID: 2913262498330900659, guid: 7a3411ba2f16ecd4ba0ad57751dd0c04,
@@ -1356,6 +1343,25 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 256
+  input: {fileID: 819507274}
+--- !u!143 &1643371203
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643371196}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1994979648
 GameObject:
   m_ObjectHideFlags: 0

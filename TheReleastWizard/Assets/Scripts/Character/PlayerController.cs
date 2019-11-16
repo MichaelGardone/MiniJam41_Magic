@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
     public int jumpHeight = 10;
 
-    public Camera camera;
+    public Camera _camera;
 
     public GameObject primaryAttack;
     public GameObject secondaryAttack;
@@ -22,21 +22,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] LayerMask groundLayers;
 
     // == private == //
-    Rigidbody rb;
-
-    PlayerInput pc;
-
     Collider col;
 
-    private bool WPressed = false;
-    private bool SPressed = false;
-    private bool APressed = false;
-    private bool DPressed = false;
-    private bool SprintToggle = false;
-    private bool SpacePressed = false;
+    CharacterController controller;
 
-    private bool primaryPressed = false;
-    private bool secondaryPressed = false;
+    [SerializeField] Input input;
 
     // For directional inputs
     Vector3 camForward;
@@ -44,49 +34,11 @@ public class PlayerController : MonoBehaviour
 
     float primaryCoolDown, secondCoolDown;
 
-    private void OnEnable()
-    {
-        pc.Player.Enable();
-    }
-
-    private void OnDisable()
-    {
-        pc.Player.Disable();
-    }
-
-    Vector2 mouseDelta;
-
     void Awake()
     {
         col = GetComponent<Collider>();
-        rb = GetComponent<Rigidbody>();
 
-        pc = new PlayerInput();
-
-        pc.Player.Up.performed += ctx => UpPressed(true);
-        pc.Player.Up.canceled += ctx => UpPressed(false);
-
-        pc.Player.Down.performed += ctx => DownPressed(true);
-        pc.Player.Down.canceled += ctx => DownPressed(false);
-
-        pc.Player.Right.performed += ctx => RightPressed(true);
-        pc.Player.Right.canceled += ctx => RightPressed(false);
-
-        pc.Player.Left.performed += ctx => LeftPressed(true);
-        pc.Player.Left.canceled += ctx => LeftPressed(false);
-
-        pc.Player.Sprint.performed += ctx => ToggleSprint();
-
-        pc.Player.Jump.performed += ctx => JumpPressed();
-
-        pc.Player.PrimaryFire.performed += ctx => PrimaryFirePressed(true);
-        pc.Player.PrimaryFire.canceled += ctx => PrimaryFirePressed(false);
-
-        pc.Player.SecondaryFire.performed += ctx => SecondaryFirePressed(true);
-        pc.Player.SecondaryFire.canceled += ctx => SecondaryFirePressed(false);
-
-        pc.Player.MouseMovement.performed += ctx => mouseDelta = ctx.ReadValue<Vector2>();
-        pc.Player.MouseMovement.canceled += ctx => mouseDelta = Vector2.zero;
+        controller = GetComponent<CharacterController>();
     }
 
     private void Update()
@@ -101,14 +53,14 @@ public class PlayerController : MonoBehaviour
         if (secondCoolDown >= secondMaxCool)
             secondCoolDown = 0;
 
-        if (primaryCoolDown == 0 && primaryPressed)
+        if (primaryCoolDown == 0 && input.primaryPressed)
         {
             GameObject g = Instantiate(primaryAttack, transform.position + transform.forward * 1.5f, Quaternion.identity);
-            g.GetComponent<Missile>().direction = camera.transform.forward;
+            g.GetComponent<Missile>().direction = _camera.transform.forward;
             primaryCoolDown += 0.0001f;
         }
 
-        if (secondCoolDown == 0 && secondaryPressed)
+        if (secondCoolDown == 0 && input.secondaryPressed)
         {
             GameObject g = Instantiate(secondaryAttack, new Vector3(transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.identity);
             secondCoolDown += 0.0001f;
@@ -117,82 +69,39 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        camForward = camera.transform.forward;
+        camForward = _camera.transform.forward;
         camForward.y = 0;
         camForward = camForward.normalized;
-        camRight = camera.transform.right;
+        camRight = _camera.transform.right;
         camRight.y = 0;
         camRight = camRight.normalized;
 
         Vector3 movement = new Vector3();
 
-        if (WPressed)
-            movement.z += walkSpeed * 10 * Time.fixedDeltaTime * (SprintToggle ? runModifier : 1);
-        if (SPressed)
-            movement.z -= walkSpeed * 10 * Time.fixedDeltaTime * (SprintToggle ? runModifier : 1);
+        if (input.WPressed)
+            movement.z += walkSpeed * Time.fixedDeltaTime * (input.SprintToggle ? runModifier : 1);
+        if (input.SPressed)
+            movement.z -= walkSpeed * Time.fixedDeltaTime * (input.SprintToggle ? runModifier : 1);
 
-        if (APressed)
-            movement.x -= walkSpeed * 10 * Time.fixedDeltaTime * (SprintToggle ? runModifier : 1);
-        if (DPressed)
-            movement.x += walkSpeed * 10 * Time.fixedDeltaTime * (SprintToggle ? runModifier : 1);
+        if (input.APressed)
+            movement.x -= walkSpeed * Time.fixedDeltaTime * (input.SprintToggle ? runModifier : 1);
+        if (input.DPressed)
+            movement.x += walkSpeed * Time.fixedDeltaTime * (input.SprintToggle ? runModifier : 1);
 
         movement = movement.z * camForward + camRight * movement.x;
 
-        transform.forward = new Vector3(camera.transform.forward.x, 0, camera.transform.forward.z);
-
-        movement = movement.normalized;
-
-        if (SpacePressed && IsGrounded())
+        if (input.SpacePressed && IsGrounded())
         {
-            SpacePressed = false;
-            rb.AddForce(transform.up * jumpHeight, ForceMode.Acceleration);
+            movement.y = jumpHeight;
         }
 
-        movement.y = rb.velocity.y;
+        transform.forward = new Vector3(_camera.transform.forward.x, 0, _camera.transform.forward.z);
 
-        rb.velocity = movement;
+        controller.Move(movement);
+
+
     }
-
-    void UpPressed(bool val)
-    {
-        WPressed = val;
-    }
-
-    void DownPressed(bool val)
-    {
-        SPressed = val;
-    }
-
-    void RightPressed(bool val)
-    {
-        DPressed = val;
-    }
-
-    void LeftPressed(bool val)
-    {
-        APressed = val;
-    }
-
-    void ToggleSprint()
-    {
-        SprintToggle = !SprintToggle;
-    }
-
-    void JumpPressed()
-    {
-        SpacePressed = true;
-    }
-
-    void PrimaryFirePressed(bool pressed)
-    {
-        primaryPressed = pressed;
-    }
-
-    void SecondaryFirePressed(bool pressed)
-    {
-        secondaryPressed = pressed;
-    }
-
+    
     private bool IsGrounded()
     {
         return Physics.CheckCapsule(col.bounds.center,

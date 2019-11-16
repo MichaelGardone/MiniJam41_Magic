@@ -10,32 +10,16 @@ public class CameraControl : MonoBehaviour
     public float distY = 4;
     public float distZ = 12.0f;
 
+    [SerializeField] Input input;
+
     [SerializeField] Transform target;
-
-    PlayerInput pc;
-
-    Vector2 mouseDelta;
 
     float velX = 0;
     float velY = 0;
 
-    private void OnEnable()
-    {
-        pc.Player.Enable();
-    }
-
-    private void OnDisable()
-    {
-        pc.Player.Disable();
-    }
-
     void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        pc = new PlayerInput();
-
-        pc.Player.MouseMovement.performed += ctx => mouseDelta = ctx.ReadValue<Vector2>();
-        pc.Player.MouseMovement.canceled += ctx => mouseDelta = Vector2.zero;
 
         velX = transform.eulerAngles.y;
         velY = transform.eulerAngles.x;
@@ -45,10 +29,10 @@ public class CameraControl : MonoBehaviour
     void LateUpdate()
     {
         // Horz. rotate
-        velX += 20 * mouseDelta.x * distZ * sensitivityX;
+        velX += 20 * input.mouseDelta.x * distZ * sensitivityX;
 
         // Vert. rotate
-        velY -= 20 * mouseDelta.y * sensitivityY;
+        velY -= 20 * input.mouseDelta.y * sensitivityY;
 
         velY = ClampAngle(velY, -20, 80);
         Quaternion rot = Quaternion.Euler(velY, velX, 0);
