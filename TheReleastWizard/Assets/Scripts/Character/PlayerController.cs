@@ -9,14 +9,19 @@ public class PlayerController : MonoBehaviour
 
     public int runModifier = 2;
 
+    public int jumpHeight = 10;
+
     public Camera camera;
+
+    [Tooltip("Layers to check for jumping.")]
+    [SerializeField] LayerMask groundLayers;
 
     // == private == //
     Rigidbody rb;
 
     PlayerInput pc;
 
-    CapsuleCollider col;
+    Collider col;
 
     private bool WPressed = false;
     private bool SPressed = false;
@@ -41,6 +46,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        col = GetComponent<Collider>();
         rb = GetComponent<Rigidbody>();
 
         pc = new PlayerInput();
@@ -72,7 +78,6 @@ public class PlayerController : MonoBehaviour
         camRight = camRight.normalized;
 
         Vector3 movement = new Vector3();
-        movement.y = rb.velocity.y;
 
         if (WPressed)
             movement.z += walkSpeed * 10 * Time.fixedDeltaTime * (SprintToggle ? runModifier : 1);
@@ -84,11 +89,16 @@ public class PlayerController : MonoBehaviour
         if (DPressed)
             movement.x += walkSpeed * 10 * Time.fixedDeltaTime * (SprintToggle ? runModifier : 1);
 
-        if(JumpPressed && IsGrounded())
-            movement.y += 
+        if(SpacePressed && IsGrounded())
+        {
+            SpacePressed = false;
+            rb.AddForce(transform.up * jumpHeight, ForceMode.Acceleration);
+        }
 
         movement = movement.z * camForward + camRight * movement.x;
         movement = movement.normalized;
+
+        movement.y = rb.velocity.y;
 
         rb.velocity = movement;
     }
@@ -125,7 +135,8 @@ public class PlayerController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics.CheckCapsule(col.bounds.center, new Vector3(col.bounds.center.x, col.bounds.min.y, col.bounds.center.z), 0.18f, groundLayers);
+        return Physics.CheckCapsule(col.bounds.center,
+            new Vector3(col.bounds.center.x, col.bounds.min.y, col.bounds.center.z), 0.18f, groundLayers);
     }
 
     // == DEBUG == //

@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 405312414}
   - component: {fileID: 405312413}
   - component: {fileID: 405312412}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -402,6 +402,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensitivityX: 0.005
   sensitivityY: 0.005
+  distY: 4
+  distZ: 12
   target: {fileID: 1643371200}
 --- !u!1 &1643371196
 GameObject:
@@ -528,4 +530,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 20
   runModifier: 2
+  jumpHeight: 500
   camera: {fileID: 963194227}
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 256
