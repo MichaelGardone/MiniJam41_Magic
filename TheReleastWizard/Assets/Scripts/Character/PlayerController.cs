@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
 
     public Camera camera;
 
+    public GameObject primaryAttack;
+    public GameObject secondaryAttack;
+
     [Tooltip("Layers to check for jumping.")]
     [SerializeField] LayerMask groundLayers;
 
@@ -34,6 +37,9 @@ public class PlayerController : MonoBehaviour
     Vector3 camForward;
     Vector3 camRight;
 
+    public float primaryMaxCool = 0.25f, secondMaxCool = 5.0f;
+    public float primaryCoolDown, secondCoolDown;
+
     private void OnEnable()
     {
         pc.Player.Enable();
@@ -43,6 +49,8 @@ public class PlayerController : MonoBehaviour
     {
         pc.Player.Disable();
     }
+
+    Vector2 mouseDelta;
 
     void Awake()
     {
@@ -66,6 +74,25 @@ public class PlayerController : MonoBehaviour
         pc.Player.Sprint.performed += ctx => ToggleSprint();
 
         pc.Player.Jump.performed += ctx => JumpPressed();
+
+        pc.Player.PrimaryFire.performed += ctx => PrimaryFirePressed();
+        pc.Player.SecondaryFire.performed += ctx => SecondaryFirePressed();
+
+        pc.Player.MouseMovement.performed += ctx => mouseDelta = ctx.ReadValue<Vector2>();
+        pc.Player.MouseMovement.canceled += ctx => mouseDelta = Vector2.zero;
+    }
+
+    private void Update()
+    {
+        if (primaryCoolDown != 0)
+            primaryCoolDown += Time.deltaTime;
+        if (secondCoolDown != 0)
+            secondCoolDown += Time.deltaTime;
+
+        if (primaryCoolDown >= primaryMaxCool)
+            primaryCoolDown = 0;
+        if (secondCoolDown >= secondMaxCool)
+            secondCoolDown = 0;
     }
 
     void FixedUpdate()
@@ -89,14 +116,17 @@ public class PlayerController : MonoBehaviour
         if (DPressed)
             movement.x += walkSpeed * 10 * Time.fixedDeltaTime * (SprintToggle ? runModifier : 1);
 
-        if(SpacePressed && IsGrounded())
+        movement = movement.z * camForward + camRight * movement.x;
+
+        transform.forward = new Vector3(camera.transform.forward.x, 0, camera.transform.forward.z);
+
+        movement = movement.normalized;
+
+        if (SpacePressed && IsGrounded())
         {
             SpacePressed = false;
             rb.AddForce(transform.up * jumpHeight, ForceMode.Acceleration);
         }
-
-        movement = movement.z * camForward + camRight * movement.x;
-        movement = movement.normalized;
 
         movement.y = rb.velocity.y;
 
@@ -133,15 +163,29 @@ public class PlayerController : MonoBehaviour
         SpacePressed = true;
     }
 
+    void PrimaryFirePressed()
+    {
+        if(primaryCoolDown == 0)
+        {
+            GameObject g = Instantiate(primaryAttack, transform.position + transform.forward * 1.5f, Quaternion.identity);
+            g.GetComponent<Missile>().direction = camera.transform.forward;
+            primaryCoolDown += 0.0001f;
+        }
+    }
+
+    void SecondaryFirePressed()
+    {
+        if(secondCoolDown == 0)
+        {
+            GameObject g = Instantiate(secondaryAttack, new Vector3(transform.position.x, transform.position.y-0.25f, transform.position.z), Quaternion.identity);
+            secondCoolDown += 0.0001f;
+        }
+    }
+
     private bool IsGrounded()
     {
         return Physics.CheckCapsule(col.bounds.center,
             new Vector3(col.bounds.center.x, col.bounds.min.y, col.bounds.center.z), 0.18f, groundLayers);
     }
 
-    // == DEBUG == //
-    private void OnDrawGizmos()
-    {
-        Debug.DrawLine(transform.position, (transform.forward + new Vector3(0,1,1)), Color.red);
-    }
 }

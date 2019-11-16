@@ -113,6 +113,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Utility"",
+                    ""type"": ""Button"",
+                    ""id"": ""11f1b817-9e38-42a4-93b2-f1233eff9b01"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -247,6 +255,28 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f0df6df5-1518-4ef9-9b95-951c9b19afd5"",
+                    ""path"": ""<Keyboard>/leftAlt"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Utility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""25614f62-9397-434a-8d11-7c831c1e1570"",
+                    ""path"": ""<Keyboard>/rightAlt"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Utility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -267,6 +297,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_Player_SecondaryFire = m_Player.FindAction("SecondaryFire", throwIfNotFound: true);
         m_Player_MiddleMouse = m_Player.FindAction("MiddleMouse", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
+        m_Player_Utility = m_Player.FindAction("Utility", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -328,6 +359,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_SecondaryFire;
     private readonly InputAction m_Player_MiddleMouse;
     private readonly InputAction m_Player_Dash;
+    private readonly InputAction m_Player_Utility;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -344,6 +376,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         public InputAction @SecondaryFire => m_Wrapper.m_Player_SecondaryFire;
         public InputAction @MiddleMouse => m_Wrapper.m_Player_MiddleMouse;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
+        public InputAction @Utility => m_Wrapper.m_Player_Utility;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -389,6 +422,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Dash.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
                 @Dash.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
                 @Dash.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
+                @Utility.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUtility;
+                @Utility.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUtility;
+                @Utility.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnUtility;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -429,6 +465,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @Dash.started += instance.OnDash;
                 @Dash.performed += instance.OnDash;
                 @Dash.canceled += instance.OnDash;
+                @Utility.started += instance.OnUtility;
+                @Utility.performed += instance.OnUtility;
+                @Utility.canceled += instance.OnUtility;
             }
         }
     }
@@ -447,5 +486,6 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         void OnSecondaryFire(InputAction.CallbackContext context);
         void OnMiddleMouse(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnUtility(InputAction.CallbackContext context);
     }
 }

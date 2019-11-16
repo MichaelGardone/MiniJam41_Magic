@@ -50,7 +50,7 @@ public class CameraControl : MonoBehaviour
         // Vert. rotate
         velY -= 20 * mouseDelta.y * sensitivityY;
 
-        velY = ClampAngle(velY, 0, 80);
+        velY = ClampAngle(velY, -20, 80);
         Quaternion rot = Quaternion.Euler(velY, velX, 0);
 
         distZ = 12.0f;
