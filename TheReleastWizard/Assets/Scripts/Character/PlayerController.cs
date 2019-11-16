@@ -16,11 +16,14 @@ public class PlayerController : MonoBehaviour
 
     PlayerInput pc;
 
+    CapsuleCollider col;
+
     private bool WPressed = false;
     private bool SPressed = false;
     private bool APressed = false;
     private bool DPressed = false;
     private bool SprintToggle = false;
+    private bool SpacePressed = false;
 
     // For directional inputs
     Vector3 camForward;
@@ -55,6 +58,8 @@ public class PlayerController : MonoBehaviour
         pc.Player.Left.canceled += ctx => LeftPressed(false);
 
         pc.Player.Sprint.performed += ctx => ToggleSprint();
+
+        pc.Player.Jump.performed += ctx => JumpPressed();
     }
 
     void FixedUpdate()
@@ -78,6 +83,9 @@ public class PlayerController : MonoBehaviour
             movement.x -= walkSpeed * 10 * Time.fixedDeltaTime * (SprintToggle ? runModifier : 1);
         if (DPressed)
             movement.x += walkSpeed * 10 * Time.fixedDeltaTime * (SprintToggle ? runModifier : 1);
+
+        if(JumpPressed && IsGrounded())
+            movement.y += 
 
         movement = movement.z * camForward + camRight * movement.x;
         movement = movement.normalized;
@@ -110,6 +118,17 @@ public class PlayerController : MonoBehaviour
         SprintToggle = !SprintToggle;
     }
 
+    void JumpPressed()
+    {
+        SpacePressed = true;
+    }
+
+    private bool IsGrounded()
+    {
+        return Physics.CheckCapsule(col.bounds.center, new Vector3(col.bounds.center.x, col.bounds.min.y, col.bounds.center.z), 0.18f, groundLayers);
+    }
+
+    // == DEBUG == //
     private void OnDrawGizmos()
     {
         Debug.DrawLine(transform.position, (transform.forward + new Vector3(0,1,1)), Color.red);
