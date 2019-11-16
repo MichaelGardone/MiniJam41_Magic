@@ -2,8 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Camera : MonoBehaviour
+public class CameraControl : MonoBehaviour
 {
+    public float sensitivityX = 0.005f;
+    public float sensitivityY = 0.005f;
+
+    public float distY = 4;
+    public float distZ = 12.0f;
+
     [SerializeField] Transform target;
 
     PlayerInput pc;
@@ -12,8 +18,6 @@ public class Camera : MonoBehaviour
 
     float velX = 0;
     float velY = 0;
-
-    float distance = 12.0f;
 
     private void OnEnable()
     {
@@ -41,23 +45,23 @@ public class Camera : MonoBehaviour
     void LateUpdate()
     {
         // Horz. rotate
-        velX += 20 * mouseDelta.x * distance * 0.02f;
+        velX += 20 * mouseDelta.x * distZ * sensitivityX;
 
         // Vert. rotate
-        velY -= 20 * mouseDelta.y * 0.02f;
+        velY -= 20 * mouseDelta.y * sensitivityY;
 
-        velY = ClampAngle(velY, -10, 80);
+        velY = ClampAngle(velY, 0, 80);
         Quaternion rot = Quaternion.Euler(velY, velX, 0);
 
-        distance = 12.0f;
+        distZ = 12.0f;
 
         RaycastHit hit;
         if(Physics.Linecast(target.position, transform.position, out hit))
         {
-            distance -= hit.distance;
+            distZ -= hit.distance;
         }
 
-        Vector3 negDistance = new Vector3(0, 0, -distance);
+        Vector3 negDistance = new Vector3(0, distY, -distZ);
         Vector3 pos = rot * negDistance + target.position;
 
         transform.rotation = rot;

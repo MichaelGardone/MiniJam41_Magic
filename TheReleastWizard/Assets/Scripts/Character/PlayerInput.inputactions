@@ -150,18 +150,7 @@
                 {
                     "name": "",
                     "id": "0ddef32c-6559-4747-8872-8a0c703e20cf",
-                    "path": "<Keyboard>/leftCtrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Sprint",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "aa911cd3-77ce-4b7c-927b-784595563277",
-                    "path": "<Keyboard>/rightCtrl",
+                    "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

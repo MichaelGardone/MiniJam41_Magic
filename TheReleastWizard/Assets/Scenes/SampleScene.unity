@@ -286,7 +286,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 9.1837e-41, z: -1.177e-42, w: -5.98e-43}
+  m_BoundingSphereOverride: {x: NaN, y: 6e-44, z: 4.5918e-41, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -400,9 +400,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d186a34b10d56147a619b31f750a124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smoothSpeed: 10
+  sensitivityX: 0.005
+  sensitivityY: 0.005
   target: {fileID: 1643371200}
-  offset: {x: 0, y: 7.5, z: -8}
 --- !u!1 &1643371196
 GameObject:
   m_ObjectHideFlags: 0
@@ -527,3 +527,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 20
+  runModifier: 2
+  camera: {fileID: 963194227}

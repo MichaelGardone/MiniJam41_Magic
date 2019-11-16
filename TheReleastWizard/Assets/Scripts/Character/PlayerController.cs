@@ -7,6 +7,10 @@ public class PlayerController : MonoBehaviour
     // == public == //
     public int walkSpeed = 20;
 
+    public int runModifier = 2;
+
+    public Camera camera;
+
     // == private == //
     Rigidbody rb;
 
@@ -17,6 +21,10 @@ public class PlayerController : MonoBehaviour
     private bool APressed = false;
     private bool DPressed = false;
     private bool SprintToggle = false;
+
+    // For directional inputs
+    Vector3 camForward;
+    Vector3 camRight;
 
     private void OnEnable()
     {
@@ -45,22 +53,34 @@ public class PlayerController : MonoBehaviour
 
         pc.Player.Left.performed += ctx => LeftPressed(true);
         pc.Player.Left.canceled += ctx => LeftPressed(false);
+
+        pc.Player.Sprint.performed += ctx => ToggleSprint();
     }
 
     void FixedUpdate()
     {
+        camForward = camera.transform.forward;
+        camForward.y = 0;
+        camForward = camForward.normalized;
+        camRight = camera.transform.right;
+        camRight.y = 0;
+        camRight = camRight.normalized;
+
         Vector3 movement = new Vector3();
         movement.y = rb.velocity.y;
 
         if (WPressed)
-            movement.z += walkSpeed * 10 * Time.fixedDeltaTime;
+            movement.z += walkSpeed * 10 * Time.fixedDeltaTime * (SprintToggle ? runModifier : 1);
         if (SPressed)
-            movement.z -= walkSpeed * 10 * Time.fixedDeltaTime;
+            movement.z -= walkSpeed * 10 * Time.fixedDeltaTime * (SprintToggle ? runModifier : 1);
 
         if (APressed)
-            movement.x -= walkSpeed * 10 * Time.fixedDeltaTime;
+            movement.x -= walkSpeed * 10 * Time.fixedDeltaTime * (SprintToggle ? runModifier : 1);
         if (DPressed)
-            movement.x += walkSpeed * 10 * Time.fixedDeltaTime;
+            movement.x += walkSpeed * 10 * Time.fixedDeltaTime * (SprintToggle ? runModifier : 1);
+
+        movement = movement.z * camForward + camRight * movement.x;
+        movement = movement.normalized;
 
         rb.velocity = movement;
     }
@@ -83,6 +103,11 @@ public class PlayerController : MonoBehaviour
     void LeftPressed(bool val)
     {
         APressed = val;
+    }
+
+    void ToggleSprint()
+    {
+        SprintToggle = !SprintToggle;
     }
 
     private void OnDrawGizmos()
