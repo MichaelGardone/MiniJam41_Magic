@@ -135,6 +135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2568619309003034721}
   - component: {fileID: 5561825034466589979}
+  - component: {fileID: 4840407538795411094}
   m_Layer: 0
   m_Name: A_VeryRealWizard
   m_TagString: Untagged
@@ -168,7 +169,7 @@ Animator:
   m_GameObject: {fileID: 1584924570622829170}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: ed57cc7b7e1276748bcebfe848d4dbe8, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a2c8276015d81324d867d5dc6e56904a, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -177,6 +178,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4840407538795411094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584924570622829170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0457ac552773ae247a56c0e77174e8b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsWalking: 0
+  IsRunning: 0
+  IsCasting: 0
+  IsFalling: 0
 --- !u!1 &1685935497827070001
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,20 +272,20 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -640063867121917104, guid: ed57cc7b7e1276748bcebfe848d4dbe8, type: 3}
-  - {fileID: -4234818926147095354, guid: ed57cc7b7e1276748bcebfe848d4dbe8, type: 3}
-  - {fileID: -3212557965072884269, guid: ed57cc7b7e1276748bcebfe848d4dbe8, type: 3}
-  - {fileID: 4835078630258379571, guid: ed57cc7b7e1276748bcebfe848d4dbe8, type: 3}
-  - {fileID: -1898866065923900264, guid: ed57cc7b7e1276748bcebfe848d4dbe8, type: 3}
-  - {fileID: -3846018093981099296, guid: ed57cc7b7e1276748bcebfe848d4dbe8, type: 3}
-  - {fileID: -4288583467269203127, guid: ed57cc7b7e1276748bcebfe848d4dbe8, type: 3}
-  - {fileID: -844110741217411738, guid: ed57cc7b7e1276748bcebfe848d4dbe8, type: 3}
-  - {fileID: -3513123385129154482, guid: ed57cc7b7e1276748bcebfe848d4dbe8, type: 3}
-  - {fileID: 3976536372952924250, guid: ed57cc7b7e1276748bcebfe848d4dbe8, type: 3}
-  - {fileID: -7203412939195730672, guid: ed57cc7b7e1276748bcebfe848d4dbe8, type: 3}
-  - {fileID: 5027810527308547882, guid: ed57cc7b7e1276748bcebfe848d4dbe8, type: 3}
-  - {fileID: -876546973899608171, guid: ed57cc7b7e1276748bcebfe848d4dbe8, type: 3}
-  - {fileID: -2249960132812961191, guid: ed57cc7b7e1276748bcebfe848d4dbe8, type: 3}
+  - {fileID: 2100000, guid: 3f3168db15074c94191277d26101a7fb, type: 2}
+  - {fileID: 2100000, guid: 6a727a19d1eb04d4dbb4fb10bdf1065c, type: 2}
+  - {fileID: 2100000, guid: 3fbbac29c8836444fb531cbc093c4dc3, type: 2}
+  - {fileID: 2100000, guid: 7063b78dbd88d0e45aebfcbac18fc6f9, type: 2}
+  - {fileID: 2100000, guid: e43f9936a1976a0408251d3fda3a8ef4, type: 2}
+  - {fileID: 0}
+  - {fileID: 2100000, guid: 557d7995049ac61468893676b7865b77, type: 2}
+  - {fileID: 2100000, guid: 99781fdabe890124b98199768a04a49d, type: 2}
+  - {fileID: 2100000, guid: cf7f1606f44aac742a95c20bd34d6d01, type: 2}
+  - {fileID: 2100000, guid: b0148b3141f7a4642be1b4a13324e953, type: 2}
+  - {fileID: 2100000, guid: 9b2f9d1ba57fbf243b7d8689c721224a, type: 2}
+  - {fileID: 2100000, guid: 732dfd7c10fbce241a3175c43a62e21a, type: 2}
+  - {fileID: 2100000, guid: 0adee6c6328d5114bb475b1af5ffd7a3, type: 2}
+  - {fileID: 2100000, guid: faae844461d921c47b08f64afcc161d4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -914,7 +931,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -1444460858095362738, guid: ed57cc7b7e1276748bcebfe848d4dbe8, type: 3}
+  - {fileID: 2100000, guid: 38e7815432caaf747a546da984f0bc5c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
