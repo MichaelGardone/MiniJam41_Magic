@@ -7,16 +7,16 @@ public interface IBaubleItem
 
     Sprite Image { get; }
 
-    void OnBaubelPickup();
+    void BaublePickup();
 }
 
 public class BaubleEventArgs : EventArgs
 {
     public IBaubleItem item;
 
-    public BaubleEventArgs(IBaubleItem incoming)
+    public BaubleEventArgs(IBaubleItem item)
     {
-        item = incoming;
+        this.item = item;
     }
 }
 

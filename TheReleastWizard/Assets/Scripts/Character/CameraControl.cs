@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
@@ -10,7 +8,7 @@ public class CameraControl : MonoBehaviour
     public float distY = 4;
     public float distZ = 12.0f;
 
-    [SerializeField] Input input;
+    [SerializeField] CentralInput input;
 
     [SerializeField] Transform target;
 

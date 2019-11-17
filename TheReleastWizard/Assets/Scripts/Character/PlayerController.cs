@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UI;
 
 public class PlayerController : Entity
 {
@@ -22,9 +17,11 @@ public class PlayerController : Entity
 
     public float primaryMaxCool = 0.25f, secondMaxCool = 5.0f;
 
+    public Inventory inventory;
+
     [Tooltip("Layers to check for jumping.")]
     [SerializeField] LayerMask groundLayers;
-    [SerializeField] Input input;
+    [SerializeField] CentralInput input;
 
     // == private == //
     Collider col;
@@ -58,6 +55,8 @@ public class PlayerController : Entity
         col = GetComponent<Collider>();
 
         controller = GetComponent<CharacterController>();
+
+        inventory = FindObjectOfType<Inventory>();
     }
 
     private void Update()
@@ -93,6 +92,13 @@ public class PlayerController : Entity
             level++;
             levelUpEvent.Invoke(level);
             maxXp = 100 * level;
+        }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Debug.Log(inventory.GetInventory().Count);
+            foreach (IBaubleItem item in inventory.GetInventory().Keys)
+                Debug.Log(item.Name);
         }
 
     }
@@ -137,6 +143,15 @@ public class PlayerController : Entity
 
         controller.Move(velocity * Time.deltaTime);
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        IBaubleItem item = other.GetComponent<IBaubleItem>();
+        if (item != null)
+        {
+            inventory.AddBauble(item);
+        }
     }
 
     private bool IsGrounded()

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Input : MonoBehaviour
+public class CentralInput : MonoBehaviour
 {
     PlayerInput pc;
 

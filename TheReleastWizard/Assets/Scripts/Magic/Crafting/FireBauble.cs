@@ -1,15 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class FireBauble : MonoBehaviour, IBaubleItem
 {
-
     public string Name
     {
         get
         {
-            return "Fire Baubel";
+            return "Fire Bauble";
         }
     }
 
@@ -23,8 +20,8 @@ public class FireBauble : MonoBehaviour, IBaubleItem
         }
     }
 
-    public void OnBaubelPickup()
+    public void BaublePickup()
     {
-        Destroy(this);
+        Destroy(gameObject);
     }
 }
