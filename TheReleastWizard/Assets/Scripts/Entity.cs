@@ -9,4 +9,19 @@ public class Entity : MonoBehaviour
 
     [SerializeField] protected int hitPower;
     [SerializeField] protected float walkSpeed;
+
+    protected List<MagicMod> modifiers = new List<MagicMod>();
+
+    public void ModifyHealth(int damage)
+    {
+        health += damage;
+
+        if (health < 0)
+            health = 0;
+    }
+
+    public void ApplyModifiers(MagicMod mod)
+    {
+
+    }
 }

@@ -13,11 +13,16 @@ public class Walkadile : Entity
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+
+        health = maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
         agent.SetDestination(targets[0].transform.position);
+
+        if (health <= 0)
+            Destroy(gameObject);
     }
 }

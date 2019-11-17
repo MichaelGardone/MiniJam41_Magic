@@ -11,6 +11,8 @@ public class Missile : MonoBehaviour
 
     public Vector3 direction;
 
+    public int damage = 2;
+
     float timer = 0.0f;
 
     // Update is called once per frame
@@ -29,9 +31,9 @@ public class Missile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Enemy")
+        if(other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-
+            other.GetComponent<Entity>().ModifyHealth(-damage);
         }
 
         Destroy(gameObject);
