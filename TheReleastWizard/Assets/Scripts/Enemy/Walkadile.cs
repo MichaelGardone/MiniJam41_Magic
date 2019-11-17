@@ -17,7 +17,7 @@ public class Walkadile : Entity
     public NavMeshAgent agent;
 
     bool playerInRange = false;
-    bool attacked = false;
+    public bool attacked = false;
 
     PlayerController target;
 
@@ -65,6 +65,7 @@ public class Walkadile : Entity
 
     IEnumerator Headbutt(PlayerController pc)
     {
+        GetComponent<SimpleEnemyAnim>().Attack();
         attacked = true;
         pc.ModifyHealth(-hitPower);
         yield return new WaitForSeconds(timeBetweenHits);
