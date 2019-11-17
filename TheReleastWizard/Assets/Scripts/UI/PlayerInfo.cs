@@ -15,6 +15,7 @@ public class PlayerInfo : MonoBehaviour
     [SerializeField] TextMeshProUGUI levelNotifierText;
 
     [SerializeField] Image baubelNotifierBg;
+    [SerializeField] TextMeshProUGUI baubelNotifierText;
 
     [SerializeField] PlayerController pc;
 

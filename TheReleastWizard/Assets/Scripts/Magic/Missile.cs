@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Missile : MonoBehaviour
 {
+    Bauble bauble;
 
     public float speed = 5f;
 

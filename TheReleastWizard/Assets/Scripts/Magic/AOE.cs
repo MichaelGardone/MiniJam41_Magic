@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class AOE : MonoBehaviour
 {
+    Bauble bauble;
+
     public float timerMax = 2.0f;
 
     float timer = 0.0f;
+
+    public int damage = 2;
 
     // Update is called once per frame
     void Update()
@@ -19,11 +23,11 @@ public class AOE : MonoBehaviour
         transform.localScale = new Vector3(transform.localScale.x * 1.025f, transform.localScale.y * 1.005f, transform.localScale.z * 1.025f);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Enemy")
         {
-            // Do things
+            other.GetComponent<Entity>().ModifyHealth(-damage);
         }
     }
 }
