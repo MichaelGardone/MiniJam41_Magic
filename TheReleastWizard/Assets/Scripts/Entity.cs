@@ -12,12 +12,24 @@ public class Entity : MonoBehaviour
 
     protected List<MagicMod> modifiers = new List<MagicMod>();
 
+    protected GameObject offender;
+
     public void ModifyHealth(int damage)
     {
         health += damage;
 
         if (health < 0)
             health = 0;
+    }
+
+    public void ModifyHealth(int damage, GameObject offender)
+    {
+        health += damage;
+
+        if (health < 0)
+            health = 0;
+
+        this.offender = offender;
     }
 
     public void ApplyModifiers(MagicMod mod)

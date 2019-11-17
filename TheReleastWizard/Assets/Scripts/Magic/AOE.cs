@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AOE : MonoBehaviour
+public class AOE : Magic
 {
     Bauble bauble;
 
     public float timerMax = 2.0f;
 
     float timer = 0.0f;
-
-    public int damage = 2;
 
     // Update is called once per frame
     void Update()

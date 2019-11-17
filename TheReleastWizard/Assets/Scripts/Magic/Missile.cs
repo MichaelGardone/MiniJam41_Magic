@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Missile : MonoBehaviour
+public class Missile : Magic
 {
     Bauble bauble;
 
@@ -11,8 +11,6 @@ public class Missile : MonoBehaviour
     public float duration = 6.0f;
 
     public Vector3 direction;
-
-    public int damage = 2;
 
     float timer = 0.0f;
 
@@ -32,11 +30,14 @@ public class Missile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if(other.gameObject.layer != LayerMask.NameToLayer("Ignore Raycast"))
         {
-            other.GetComponent<Entity>().ModifyHealth(-damage);
-        }
+            if(other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                other.GetComponent<Entity>().ModifyHealth(-damage, owner.gameObject);
+            }
 
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 }

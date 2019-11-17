@@ -76,12 +76,14 @@ public class PlayerController : Entity
         {
             GameObject g = Instantiate(primaryAttack, transform.position + transform.forward * 1.5f, Quaternion.identity);
             g.GetComponent<Missile>().direction = _camera.transform.forward;
+            g.GetComponent<Magic>().SetOwner(this);
             primaryCoolDown += 0.0001f;
         }
 
         if (secondCoolDown == 0 && input.secondaryPressed)
         {
             GameObject g = Instantiate(secondaryAttack, new Vector3(transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.identity);
+            g.GetComponent<Magic>().SetOwner(this);
             secondCoolDown += 0.0001f;
         }
 

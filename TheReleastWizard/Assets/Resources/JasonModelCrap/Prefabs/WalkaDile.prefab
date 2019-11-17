@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 750686041}
   - component: {fileID: 750686042}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: AttackZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1137,8 +1137,7 @@ MonoBehaviour:
   maxHealth: 50
   hitPower: 5
   walkSpeed: 5
-  targets:
-  - {fileID: 0}
+  targets: []
   agent: {fileID: 0}
 --- !u!195 &169954064
 NavMeshAgent:
