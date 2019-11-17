@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -11,9 +12,15 @@ public class Walkadile : Entity
 
     [SerializeField] List<GameObject> targets;
 
+    public float timeBetweenHits = 2.0f;
+
     public NavMeshAgent agent;
 
     bool playerInRange = false;
+    bool attacked = false;
+
+    PlayerController target;
+
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +47,8 @@ public class Walkadile : Entity
         if (playerInRange)
         {
             agent.isStopped = true;
+            if (!attacked)
+                StartCoroutine(Headbutt(target));
         }
         else
         {
@@ -54,19 +63,21 @@ public class Walkadile : Entity
         }
     }
 
+    IEnumerator Headbutt(PlayerController pc)
+    {
+        attacked = true;
+        pc.ModifyHealth(-hitPower);
+        yield return new WaitForSeconds(timeBetweenHits);
+        attacked = false;
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             playerInRange = true;
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-
+            target = other.GetComponent<PlayerController>();
         }
     }
 
