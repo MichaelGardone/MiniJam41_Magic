@@ -949,6 +949,10 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 1362853699}
+    - target: {fileID: 169954062, guid: 88496056f1d19f74093711a4c872c499, type: 3}
+      propertyPath: threat
+      value: 
+      objectReference: {fileID: 1468029302}
     - target: {fileID: 750686040, guid: 88496056f1d19f74093711a4c872c499, type: 3}
       propertyPath: m_Layer
       value: 2
@@ -961,6 +965,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1468029299}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1468029301 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 750686040, guid: 88496056f1d19f74093711a4c872c499,
+    type: 3}
+  m_PrefabInstance: {fileID: 1468029299}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1468029302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1468029301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6bf33b273768a942b5275ab0077a263, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInRange: 0
 --- !u!1 &1643371196
 GameObject:
   m_ObjectHideFlags: 0

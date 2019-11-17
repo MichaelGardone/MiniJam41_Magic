@@ -1,49 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &750686040
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 750686041}
-  - component: {fileID: 750686042}
-  m_Layer: 2
-  m_Name: AttackZone
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &750686041
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 750686040}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 7396473374977763085}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &750686042
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 750686040}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 1}
 --- !u!1 &972388264
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +179,7 @@ RectTransform:
   - {fileID: 1132405839}
   - {fileID: 972388265}
   m_Father: {fileID: 7396473374977763085}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1297,6 +1253,7 @@ GameObject:
   - component: {fileID: 169954062}
   - component: {fileID: 169954064}
   - component: {fileID: 416396595483275988}
+  - component: {fileID: 7517903626123903618}
   m_Layer: 10
   m_Name: WalkaDile
   m_TagString: Enemy
@@ -1317,7 +1274,6 @@ Transform:
   m_Children:
   - {fileID: 6488429216496823427}
   - {fileID: 7962945563301044654}
-  - {fileID: 750686041}
   - {fileID: 1362853696}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1369,7 +1325,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1
-  m_Center: {x: 0, y: 0.99, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &169954062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1388,6 +1344,7 @@ MonoBehaviour:
   healthImg: {fileID: 972388266}
   canvas: {fileID: 1362853699}
   targets: []
+  threat: {fileID: 0}
   agent: {fileID: 0}
 --- !u!195 &169954064
 NavMeshAgent:
@@ -1424,6 +1381,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PublicState: 0
+--- !u!135 &7517903626123903618
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5836335814509450526}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 1, z: 1.5}
 --- !u!1 &6330617355413066527
 GameObject:
   m_ObjectHideFlags: 0
