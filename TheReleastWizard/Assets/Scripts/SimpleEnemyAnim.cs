@@ -39,7 +39,7 @@ public class SimpleEnemyAnim : MonoBehaviour
             StartCoroutine(ResetToPreviousState(animator.GetInteger(_ControlIntName)));
         }
         animator.SetInteger(_ControlIntName, state);
-        Debug.Log(ControlIntName);
+        //Debug.Log(ControlIntName);
         
 
     }
