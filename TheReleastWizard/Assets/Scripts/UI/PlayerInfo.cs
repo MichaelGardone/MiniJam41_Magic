@@ -24,14 +24,22 @@ public class PlayerInfo : MonoBehaviour
     public float maxLevelLogDur = 10.0f;
     public float maxBaubelLogDur = 10.0f;
 
+    public float delayToDisappearLevelLog = 5.0f;
+    public float delayToDisappearBaubelLog = 5.0f;
+
     List<string> levelNotifier = new List<string>();
     List<string> baubelNotifier = new List<string>();
 
     bool updatedLevelLog = false;
     bool updatedBaubelLog = false;
 
+    bool resetLogTimer = false;
+
     float timeSinceLastLevelLog = 0.0f;
     float timeSinceLastBaubelLog = 0.0f;
+
+    float levelLogDelayTimer = 0.0f;
+    float baubelLogDelayTimer = 0.0f;
 
     private void Start()
     {
@@ -48,20 +56,43 @@ public class PlayerInfo : MonoBehaviour
 
         if(timeSinceLastLevelLog < maxLevelLogDur)
         {
-            levelNotifierText.SetText("");
+            if(updatedLevelLog)
+            {
+                levelNotifierText.SetText("");
 
-            foreach (string s in levelNotifier)
-                levelNotifierText.SetText(levelNotifierText.text + s + "\n");
+                foreach (string s in levelNotifier)
+                    levelNotifierText.SetText(levelNotifierText.text + s + "\n");
+
+                updatedLevelLog = false;
+            }
 
             levelNotifierText.color = new Color(levelNotifierText.color.r, levelNotifierText.color.g, levelNotifierText.color.b,
                     1 - timeSinceLastLevelLog / maxLevelLogDur);
 
             if(timeSinceLastLevelLog > maxLevelLogDur / 2)
-                levelNotifierBg.color = new Color(levelNotifierText.color.r, levelNotifierText.color.g, levelNotifierText.color.b,
+                levelNotifierBg.color = new Color(levelNotifierBg.color.r, levelNotifierBg.color.g, levelNotifierBg.color.b,
                         1 - timeSinceLastLevelLog / maxLevelLogDur);
+            else
+                levelNotifierBg.color = new Color(levelNotifierBg.color.r, levelNotifierBg.color.g, levelNotifierBg.color.b,
+                        0.5f);
         }
 
-        timeSinceLastLevelLog += Time.deltaTime;
+        if(resetLogTimer)
+        {
+            timeSinceLastLevelLog = 0.0f;
+
+            levelLogDelayTimer += Time.deltaTime;
+
+            if(levelLogDelayTimer >= delayToDisappearLevelLog)
+            {
+                resetLogTimer = false;
+                levelLogDelayTimer = 0.0f;
+            }
+        }
+        else
+        {
+            timeSinceLastLevelLog += Time.deltaTime;
+        }
 
     }
 
@@ -75,6 +106,8 @@ public class PlayerInfo : MonoBehaviour
         levelNotifier.Add("You acheived level " + level + "!");
 
         updatedLevelLog = true;
+
+        resetLogTimer = true;
     }
 
 }
