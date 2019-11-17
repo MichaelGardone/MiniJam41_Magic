@@ -1296,6 +1296,7 @@ GameObject:
   - component: {fileID: 169954061}
   - component: {fileID: 169954062}
   - component: {fileID: 169954064}
+  - component: {fileID: 416396595483275988}
   m_Layer: 10
   m_Name: WalkaDile
   m_TagString: Enemy
@@ -1331,7 +1332,7 @@ Animator:
   m_GameObject: {fileID: 5836335814509450526}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 74614dac058676a42b9cb083bc9b6f2a, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b02289cd3c50aa84f84e85eeb3519622, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1368,7 +1369,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1
-  m_Center: {x: 0, y: 0.75, z: 0}
+  m_Center: {x: 0, y: 0.99, z: 0}
 --- !u!114 &169954062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1410,6 +1411,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &416396595483275988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5836335814509450526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d2f7e88910165e498ac88bc34d9cd71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PublicState: 0
 --- !u!1 &6330617355413066527
 GameObject:
   m_ObjectHideFlags: 0
