@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Entity
 {
     // == public == //
-    public int walkSpeed = 20;
-
     public int runModifier = 2;
 
-    public int jumpHeight = 10;
+    public int jumpHeight = 3;
+
+    public float gravity = -9.81f;
 
     public Camera _camera;
 
@@ -20,19 +20,22 @@ public class PlayerController : MonoBehaviour
 
     [Tooltip("Layers to check for jumping.")]
     [SerializeField] LayerMask groundLayers;
+    [SerializeField] Input input;
 
     // == private == //
     Collider col;
 
     CharacterController controller;
 
-    [SerializeField] Input input;
+    Vector3 velocity;
 
     // For directional inputs
     Vector3 camForward;
     Vector3 camRight;
 
     float primaryCoolDown, secondCoolDown;
+
+    bool inAir;
 
     void Awake()
     {
@@ -69,6 +72,8 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        inAir = !IsGrounded();
+
         camForward = _camera.transform.forward;
         camForward.y = 0;
         camForward = camForward.normalized;
@@ -90,15 +95,22 @@ public class PlayerController : MonoBehaviour
 
         movement = movement.z * camForward + camRight * movement.x;
 
-        if (input.SpacePressed && IsGrounded())
-        {
-            movement.y = jumpHeight;
-        }
 
         transform.forward = new Vector3(_camera.transform.forward.x, 0, _camera.transform.forward.z);
 
         controller.Move(movement);
+        
+        if (!inAir && velocity.y < 0)
+            velocity.y = -2f;
+        
+        if (input.SpacePressed && !inAir)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        }
+        
+        velocity.y += gravity * Time.fixedDeltaTime;
 
+        controller.Move(velocity * Time.deltaTime);
 
     }
     

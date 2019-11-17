@@ -85,7 +85,8 @@ public class Input : MonoBehaviour
 
         pc.Player.Sprint.performed += ctx => ToggleSprint();
 
-        pc.Player.Jump.performed += ctx => JumpPressed();
+        pc.Player.Jump.performed += ctx => JumpPressed(true);
+        pc.Player.Jump.canceled += ctx => JumpPressed(false);
 
         pc.Player.PrimaryFire.performed += ctx => PrimaryFirePressed(true);
         pc.Player.PrimaryFire.canceled += ctx => PrimaryFirePressed(false);
@@ -122,9 +123,9 @@ public class Input : MonoBehaviour
         SprintToggle = !SprintToggle;
     }
 
-    void JumpPressed()
+    void JumpPressed(bool val)
     {
-        SpacePressed = true;
+        SpacePressed = val;
     }
 
     void PrimaryFirePressed(bool pressed)
