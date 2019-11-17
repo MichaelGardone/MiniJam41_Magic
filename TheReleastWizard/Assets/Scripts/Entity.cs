@@ -24,4 +24,19 @@ public class Entity : MonoBehaviour
     {
 
     }
+
+    public float GetHealthAsPercent()
+    {
+        return ((float)health) / maxHealth;
+    }
+
+    public int GetMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    public int GetHealth()
+    {
+        return health;
+    }
 }

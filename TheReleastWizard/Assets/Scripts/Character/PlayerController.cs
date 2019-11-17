@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : Entity
 {
@@ -37,8 +39,14 @@ public class PlayerController : Entity
 
     bool inAir;
 
+    public int xp;
+
+    int maxXp = 100;
+
     void Awake()
     {
+        health = maxHealth;
+
         col = GetComponent<Collider>();
 
         controller = GetComponent<CharacterController>();
@@ -68,6 +76,9 @@ public class PlayerController : Entity
             GameObject g = Instantiate(secondaryAttack, new Vector3(transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.identity);
             secondCoolDown += 0.0001f;
         }
+
+
+
     }
 
     void FixedUpdate()
@@ -99,25 +110,30 @@ public class PlayerController : Entity
         transform.forward = new Vector3(_camera.transform.forward.x, 0, _camera.transform.forward.z);
 
         controller.Move(movement);
-        
+
         if (!inAir && velocity.y < 0)
             velocity.y = -2f;
-        
+
         if (input.SpacePressed && !inAir)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
-        
+
         velocity.y += gravity * Time.fixedDeltaTime;
 
         controller.Move(velocity * Time.deltaTime);
 
     }
-    
+
     private bool IsGrounded()
     {
         return Physics.CheckCapsule(col.bounds.center,
             new Vector3(col.bounds.center.x, col.bounds.min.y, col.bounds.center.z), 0.18f, groundLayers);
+    }
+
+    public float GetXpAsPercent()
+    {
+        return ((float)xp) / maxXp;
     }
 
 }
