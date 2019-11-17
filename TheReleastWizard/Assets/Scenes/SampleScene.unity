@@ -568,7 +568,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0.140625, z: 0.03125, w: -0.03125}
+  m_BoundingSphereOverride: {x: 0, y: 1.87481e-28, z: 7.83e-43, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -918,7 +918,7 @@ Transform:
   m_Children:
   - {fileID: 349901585}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1643371201
 BoxCollider:
@@ -1098,7 +1098,7 @@ PrefabInstance:
     - target: {fileID: 4604766627855121710, guid: 6aedda9ba62f70e4ea7d16ebbb220211,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4604766627855121710, guid: 6aedda9ba62f70e4ea7d16ebbb220211,
         type: 3}

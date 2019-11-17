@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : Entity
 {
@@ -94,12 +95,20 @@ public class PlayerController : Entity
             maxXp = 100 * level;
         }
 
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.C))
         {
             Debug.Log(inventory.GetInventory().Count);
             foreach (IBaubleItem item in inventory.GetInventory().Keys)
                 Debug.Log(item.Name);
         }
+
+        if(Input.GetKeyDown(KeyCode.V))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            SceneManager.LoadScene(1);
+        }
+#endif
 
     }
 
