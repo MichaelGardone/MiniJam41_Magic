@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class SimpleEnemyAnim : MonoBehaviour
 {
+    public float damageDelay = 1;
     [SerializeField] float VelocityThreshold;
     [SerializeField] string ControlIntName;
     private int _ControlIntName;

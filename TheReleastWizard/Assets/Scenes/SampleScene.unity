@@ -892,6 +892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd4d3ecc866e00b4991bf549b338d872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageDelay: 1.5
   VelocityThreshold: 0
   ControlIntName: AnimState
 --- !u!1001 &1468029299

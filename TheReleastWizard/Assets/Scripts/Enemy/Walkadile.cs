@@ -21,7 +21,7 @@ public class Walkadile : Entity
 
     PlayerController target;
 
-
+    SimpleEnemyAnim anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +32,8 @@ public class Walkadile : Entity
         targets.Add(FindObjectOfType<PlayerController>().gameObject);
 
         canvas.enabled = false;
+
+        anim = GetComponent<SimpleEnemyAnim>();
     }
 
     // Update is called once per frame
@@ -65,10 +67,16 @@ public class Walkadile : Entity
 
     IEnumerator Headbutt(PlayerController pc)
     {
-        GetComponent<SimpleEnemyAnim>().Attack();
         attacked = true;
-        pc.ModifyHealth(-hitPower);
-        yield return new WaitForSeconds(timeBetweenHits);
+        anim.Attack(); //aniamtion
+        yield return new WaitForSeconds(anim.damageDelay);  
+        if(playerInRange)
+            pc.ModifyHealth(-hitPower);
+
+        if (timeBetweenHits - anim.damageDelay > 0)
+        {
+            yield return new WaitForSeconds(timeBetweenHits - anim.damageDelay);
+        }
         attacked = false;
     }
 
