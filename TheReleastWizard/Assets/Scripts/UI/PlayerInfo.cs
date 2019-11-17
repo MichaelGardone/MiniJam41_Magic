@@ -33,6 +33,8 @@ public class PlayerInfo : MonoBehaviour
     bool updatedLevelLog = false;
     bool updatedBaubelLog = false;
 
+    bool displayLevelLog = false;
+
     bool resetLogTimer = false;
 
     float timeSinceLastLevelLog = 0.0f;
@@ -54,7 +56,12 @@ public class PlayerInfo : MonoBehaviour
 
         xp.fillAmount = pc.GetXpAsPercent();
 
-        if(timeSinceLastLevelLog < maxLevelLogDur)
+        if (timeSinceLastLevelLog >= maxLevelLogDur)
+            displayLevelLog = false;
+        else
+            displayLevelLog = true;
+
+        if(displayLevelLog)
         {
             if(updatedLevelLog)
             {
@@ -71,10 +78,18 @@ public class PlayerInfo : MonoBehaviour
 
             if(timeSinceLastLevelLog > maxLevelLogDur / 2)
                 levelNotifierBg.color = new Color(levelNotifierBg.color.r, levelNotifierBg.color.g, levelNotifierBg.color.b,
-                        1 - timeSinceLastLevelLog / maxLevelLogDur);
+                    1 - timeSinceLastLevelLog / maxLevelLogDur);
             else
                 levelNotifierBg.color = new Color(levelNotifierBg.color.r, levelNotifierBg.color.g, levelNotifierBg.color.b,
-                        0.5f);
+                    0.5f);
+        }
+        else
+        {
+            levelNotifierText.color = new Color(levelNotifierText.color.r, levelNotifierText.color.g, levelNotifierText.color.b,
+                0);
+
+            levelNotifierBg.color = new Color(levelNotifierBg.color.r, levelNotifierBg.color.g, levelNotifierBg.color.b,
+                0);
         }
 
         if(resetLogTimer)
