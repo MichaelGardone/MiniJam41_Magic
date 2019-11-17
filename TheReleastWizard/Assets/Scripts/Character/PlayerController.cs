@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class PlayerController : Entity
@@ -43,8 +45,14 @@ public class PlayerController : Entity
 
     int maxXp = 100;
 
+    int level = 1;
+
+    PlayerLevelUp levelUpEvent;
+
     void Awake()
     {
+        levelUpEvent = new PlayerLevelUp();
+
         health = maxHealth;
 
         col = GetComponent<Collider>();
@@ -77,7 +85,13 @@ public class PlayerController : Entity
             secondCoolDown += 0.0001f;
         }
 
-
+        if(xp >= maxXp)
+        {
+            xp -= maxXp;
+            level++;
+            levelUpEvent.Invoke(level);
+            maxXp = 100 * level;
+        }
 
     }
 
@@ -115,9 +129,7 @@ public class PlayerController : Entity
             velocity.y = -2f;
 
         if (input.SpacePressed && !inAir)
-        {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
-        }
 
         velocity.y += gravity * Time.fixedDeltaTime;
 
@@ -134,6 +146,16 @@ public class PlayerController : Entity
     public float GetXpAsPercent()
     {
         return ((float)xp) / maxXp;
+    }
+
+    public int LevelUp()
+    {
+        return level;
+    }
+
+    public void AddListenerForLevelUp(UnityAction<int> listener)
+    {
+        levelUpEvent.AddListener(listener);
     }
 
 }

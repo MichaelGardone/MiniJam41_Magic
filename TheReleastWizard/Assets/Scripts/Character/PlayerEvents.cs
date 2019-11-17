@@ -1,5 +1,6 @@
-﻿using UnityEngine.Events;
+﻿using System;
+using UnityEngine.Events;
 
-public class PlayerLevelUp : UnityEvent<int>
-{ }
+[Serializable]
+public class PlayerLevelUp : UnityEvent<int> { }
 

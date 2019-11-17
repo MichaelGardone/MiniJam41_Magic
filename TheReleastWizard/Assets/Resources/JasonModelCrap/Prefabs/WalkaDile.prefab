@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1253099399301024339}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hand.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5211715595162638228}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MouthUpper_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8665071658418167583}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Heel.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4855088082147886077}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LegTop.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -134,7 +134,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8337906095399742821}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ToeMid.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1088408272565787104}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LegTop.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 259916570839770824}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ToeOuter.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,7 +225,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6556119152927092353}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MouthBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6909566656051736348}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ToeMid.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6488429216496823427}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,7 +323,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7269851730621155152}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tail3_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +353,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7176162888886069426}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ToeInner.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -384,7 +384,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7739097684861801178}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ToeOuter.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -415,7 +415,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4293513521020941868}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MouthUpper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -446,7 +446,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5722381885135561325}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -480,7 +480,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7072141149155390915}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MouthBase_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -510,7 +510,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 889575674078611325}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ToeOuter.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -540,7 +540,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4581361971556135626}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Chest.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -571,7 +571,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4114375560743212119}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IKHandle.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -601,7 +601,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 295648283565322710}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MouthBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -632,7 +632,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8663688712086258541}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LegLower.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -663,7 +663,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4434138229588556095}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ToeMid.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -693,7 +693,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1828167032255839827}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Heel.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -726,7 +726,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6260035431973348256}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LegUpper.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -757,7 +757,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2445620573170751712}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Chest.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -788,7 +788,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4362369791623979045}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ToeInner.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -818,7 +818,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1419728856494449460}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IKTailHandle_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -848,7 +848,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3452185556586795073}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ToeMid.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -879,7 +879,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7993615036503702787}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ToeInner.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -910,7 +910,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5105794205205540077}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IKHandle.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -940,7 +940,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2760446053806330264}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hand.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -970,7 +970,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4049925619868759454}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IKTailHandle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1002,9 +1002,13 @@ GameObject:
   m_Component:
   - component: {fileID: 7396473374977763085}
   - component: {fileID: 589846864060975735}
-  m_Layer: 0
+  - component: {fileID: 169954063}
+  - component: {fileID: 169954061}
+  - component: {fileID: 169954062}
+  - component: {fileID: 169954064}
+  m_Layer: 10
   m_Name: WalkaDile
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1044,6 +1048,75 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!54 &169954063
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5836335814509450526}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
+--- !u!135 &169954061
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5836335814509450526}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0.75, z: 0}
+--- !u!114 &169954062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5836335814509450526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b58db645d289da140b3c2045f690c452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 50
+  hitPower: 5
+  walkSpeed: 5
+  targets:
+  - {fileID: 0}
+  agent: {fileID: 0}
+--- !u!195 &169954064
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5836335814509450526}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &6330617355413066527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,7 +1126,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7219330147166019074}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LegUpper.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1084,7 +1157,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9025823858059810221}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tail2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1115,7 +1188,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5967300980239857257}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ToeInner.R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1145,7 +1218,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1298982096358781325}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IKHandle.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1176,7 +1249,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9142053943881921045}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IKHandle.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1208,9 +1281,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7962945563301044654}
   - component: {fileID: 3834526939931776673}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1323,7 +1396,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3525658227676785114}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TorsoLower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1354,7 +1427,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1483892993478373403}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: LegLower.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1387,7 +1460,7 @@ GameObject:
   - component: {fileID: 1067872569920880775}
   - component: {fileID: 8013948995134082860}
   - component: {fileID: 3306283675569387779}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Brows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1463,7 +1536,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1076602923866317882}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TorsoUpper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1496,7 +1569,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4019652517810171518}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tail1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1527,7 +1600,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7379044317571413769}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ToeOuter.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1558,7 +1631,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3003109869176953850}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tail3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1589,7 +1662,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9052739337453667684}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hand.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1620,7 +1693,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1068327254181365746}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hand.L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
